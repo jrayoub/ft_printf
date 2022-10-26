@@ -10,15 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "./src/ft_printf.h"
+#include "./src/ft_printf.h"
 
-// int	main(int ac, char **av)
-// {
-// 	int	y;
+int	main(int ac, char **av)
+{
+	int	y;
+	int	a;
 
-// 	y = 7890;
-// 	printf("  calc %d   \n", printf("' %x '", 20));
-// 	printf("  calc %d   \n", printf("' %x '", -20));
-// 	// printf("calc %d   \n", printf("'%d'", INT_MIN));
-// 	// printf("%d \t",printf("%d", -10));
-// }
+	y = 7890;
+	a = ft_printf("' %s '", "Hello");
+	printf("%d", a);
+	a = printf("' %s '", "Hello");
+	printf("\n%d", a);
+	// ft_printf("  calc %d   \n", ft_printf("' %% '"));
+	// printf("  calc %d   \n", printf("' %% '"));
+}

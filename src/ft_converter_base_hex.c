@@ -12,13 +12,12 @@
 
 #include "ft_printf.h"
 
-void	ft_converter_base_hex(unsigned long int n, int index, char format)
+void	ft_converter_base_hex(unsigned long int n, char format)
 {
 	int	base_char;
 
-	index -= 1;
 	if (n >= 16)
-		ft_converter_base_hex(n / 16, index, format);
+		ft_converter_base_hex(n / 16, format);
 	if (n % 16 < 10)
 		ft_putchar_fd(48 + (n % 16), 1);
 	else

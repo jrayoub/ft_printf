@@ -52,25 +52,32 @@ int	printer(va_list ap, const char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '%' && str[i + 1] == 'c' && str[i++])
+		if (str[i] == '%')
 		{
-			ft_putchar_fd(va_arg(ap, int), 1);
-			printed_index++;
+			if (!str[i + 1])
+				break ;
+			if (str[i + 1] == 'c')
+			{
+				ft_putchar_fd(va_arg(ap, int), 1);
+				printed_index++;
+			}
+			else if (str[i + 1] == 's')
+				printed_index += print_and_calc_str(va_arg(ap, char *));
+			else if (str[i + 1] == 'p')
+				printed_index += print_ptr_adress(va_arg(ap, size_t));
+			else if ((str[i + 1] == 'd' || str[i + 1] == 'i'))
+				printed_index += print_and_calc_num(va_arg(ap, int));
+			else if (str[i + 1] == 'u')
+				ft_put_unsigned(va_arg(ap, unsigned int), &printed_index);
+			else if ((str[i + 1] == 'x' || str[i + 1] == 'X'))
+				printed_index += print_hex(va_arg(ap, int), str[i + 1]);
+			else if (str[i + 1] == '%')
+			{
+				ft_putchar_fd(str[i + 1], 1);
+				printed_index++;
+			}
+			i++;
 		}
-		else if (str[i] == '%' && str[i + 1] == 's' && str[i++])
-			printed_index += print_and_calc_str(va_arg(ap, char *));
-		else if (str[i] == '%' && str[i + 1] == 'p' && str[i++])
-			printed_index += print_ptr_adress(va_arg(ap, long));
-		else if (str[i] == '%' && (str[i + 1] == 'd' || str[i + 1] == 'i')
-			&& str[i++])
-			printed_index += print_and_calc_num(va_arg(ap, int));
-		else if (str[i] == '%' && str[i + 1] == 'u' && str[i++])
-			ft_put_unsigned(va_arg(ap, unsigned int), &printed_index);
-		else if (str[i] == '%' && (str[i + 1] == 'x' || str[i + 1] == 'X')
-			&& str[i++])
-			printed_index += print_hex(va_arg(ap, int), str[i]);
-		else if (str[i] == '%' && str[i + 1] != '%' && str[i++])
-			return (0);
 		else
 		{
 			ft_putchar_fd(str[i], 1);

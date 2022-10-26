@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-int	print_ptr_adress(unsigned long int n)
+int	print_ptr_adress(size_t n)
 {
 	int	size;
 
 	size = ft_calc_num_base_size(n, 16);
-	if (size > 8)
-		size = 12;
+	// if (size > 8)
+	// 	size = 12;
 	ft_putstr_fd("0x", 1);
-	ft_converter_base_hex(n, size, 'x');
+	ft_converter_base_hex(n, 'x');
 	return (size + 2);
 }

@@ -12,13 +12,12 @@
 
 #include "ft_printf.h"
 
-int	print_hex(unsigned long int n, char formate)
+int	print_hex(unsigned int n, char formate)
 {
 	int	size;
 
+	// printf("\n\nvalue is ÷:: %lu\n", n);
 	size = ft_calc_num_base_size(n, 16);
-	if (size > 8)
-		size = 8;
-	ft_converter_base_hex(n, size, formate);
+	ft_converter_base_hex(n, formate);
 	return (size);
 }

@@ -14,14 +14,10 @@
 
 int	main(int ac, char **av)
 {
-	int	y;
 	int	a;
+	int	b;
 
-	y = 7890;
-	a = ft_printf("' %s '", "Hello");
-	printf("%d", a);
-	a = printf("' %s '", "Hello");
-	printf("\n%d", a);
-	// ft_printf("  calc %d   \n", ft_printf("' %% '"));
-	// printf("  calc %d   \n", printf("' %% '"));
+	a = ft_printf("%p", LONG_MIN);
+	b = printf("%lp", LONG_MIN);
+	printf("\na = %d \nb = %d", a, b);
 }

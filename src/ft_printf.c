@@ -16,10 +16,7 @@ static int	calc_number_len(int num)
 {
 	int	i;
 
-	i = 0;
-	if (num < 0)
-		i++;
-	i += Calc_size(num, 10);
+	i = ft_calc_num_base_size(num, 10);
 	return (i);
 }
 
@@ -36,6 +33,11 @@ int	print_and_calc_str(char *str)
 {
 	int	printed_index;
 
+	if (!str)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (6);
+	}
 	printed_index = ft_strlen(str);
 	ft_putstr_fd(str, 1);
 	return (printed_index);
@@ -58,15 +60,15 @@ int	printer(va_list ap, const char *str)
 		else if (str[i] == '%' && str[i + 1] == 's' && str[i++])
 			printed_index += print_and_calc_str(va_arg(ap, char *));
 		else if (str[i] == '%' && str[i + 1] == 'p' && str[i++])
-			print_ptr_adress(va_arg(ap, long), &printed_index);
+			printed_index += print_ptr_adress(va_arg(ap, long));
 		else if (str[i] == '%' && (str[i + 1] == 'd' || str[i + 1] == 'i')
-				&& str[i++])
+			&& str[i++])
 			printed_index += print_and_calc_num(va_arg(ap, int));
 		else if (str[i] == '%' && str[i + 1] == 'u' && str[i++])
 			ft_put_unsigned(va_arg(ap, unsigned int), &printed_index);
 		else if (str[i] == '%' && (str[i + 1] == 'x' || str[i + 1] == 'X')
-				&& str[i++])
-			print_hex(va_arg(ap, int), str[i], &printed_index);
+			&& str[i++])
+			printed_index += print_hex(va_arg(ap, int), str[i]);
 		else if (str[i] == '%' && str[i + 1] != '%' && str[i++])
 			return (0);
 		else

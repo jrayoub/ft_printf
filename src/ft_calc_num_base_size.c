@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_calc_num_base_size.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaitouna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,17 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+int	ft_calc_num_base_size(long int n, int base)
+{
+	int	i;
 
-# include "../libft/libft.h"
-# include <stdarg.h>
-
-int		ft_printf(const char *str, ...);
-int		ft_calc_num_base_size(unsigned long int n, int base);
-void	ft_converter_base_hex(unsigned long int n, int index, char format);
-void	ft_put_unsigned(unsigned int num, int *i);
-int		print_hex(unsigned long int n, char formate);
-int		print_ptr_adress(unsigned long int n);
-
-#endif
+	i = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+	{
+		i++;
+		n *= -1;
+	}
+	while (n != 0)
+	{
+		n /= base;
+		i++;
+	}
+	return (i);
+}

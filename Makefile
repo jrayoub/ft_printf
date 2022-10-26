@@ -6,7 +6,7 @@ LIBFT_SRC_FILES		=libft/ft_isalnum.c libft/ft_isprint.c libft/ft_memcmp.c  libft
 					libft/ft_toupper.c libft/ft_calloc.c  libft/ft_isdigit.c libft/ft_memchr.c  libft/ft_memset.c  \
 					libft/ft_putstr_fd.c  libft/ft_strjoin.c libft/ft_strmapi.c libft/ft_strtrim.c libft/ft_striteri.c
 
-SRC_PRINTF			= src/ft_printf.c src/Calc_size.c src/Converter.c src/ft_put_unsigned.c src/print_hex.c \
+SRC_PRINTF			= src/ft_printf.c src/ft_calc_num_base_size.c src/ft_converter_base_hex.c src/ft_put_unsigned.c src/print_hex.c \
 					src/print_ptr_adress.c
 
 OBJ_FILES		= $(LIBFT_SRC_FILES:.c=.o)

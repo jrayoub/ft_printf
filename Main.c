@@ -1,14 +1,24 @@
-#include "./src/ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaitouna <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/16 17:26:23 by aaitouna          #+#    #+#             */
+/*   Updated: 2022/10/17 02:04:27 by aaitouna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	main(int ac, char **av)
-{
-	unsigned int	a;
-	int				ft_i;
-	int				i;
+// #include "./src/ft_printf.h"
 
-	a = 78;
-	ft_i = ft_printf("%s yeasaah %d ...... %p", "Hellow", 77898798, &ft_i);
-	printf("\n");
-	i = printf("%s yeasaah %d ...... %p", "Hellow", 77898798, &ft_i);
-	printf("\n\nft_i =  %d\ni    =  %d\n", ft_i, i);
-}
+// int	main(int ac, char **av)
+// {
+// 	int	y;
+
+// 	y = 7890;
+// 	printf("  calc %d   \n", printf("' %x '", 20));
+// 	printf("  calc %d   \n", printf("' %x '", -20));
+// 	// printf("calc %d   \n", printf("'%d'", INT_MIN));
+// 	// printf("%d \t",printf("%d", -10));
+// }

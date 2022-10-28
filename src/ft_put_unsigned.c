@@ -14,7 +14,7 @@
 
 void	ft_put_unsigned(unsigned int num, int *i)
 {
-	char c;
+	char	c;
 
 	if (num >= 10)
 		ft_put_unsigned(num / 10, i);

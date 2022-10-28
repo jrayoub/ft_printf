@@ -43,47 +43,30 @@ int	print_and_calc_str(char *str)
 	return (printed_index);
 }
 
-int	printer(va_list ap, const char *str)
+int	print_by_format(va_list ap, char c)
 {
-	int	i;
 	int	printed_index;
 
 	printed_index = 0;
-	i = 0;
-	while (str[i])
+	if (c == 'c')
 	{
-		if (str[i] == '%')
-		{
-			if (!str[i + 1])
-				break ;
-			if (str[i + 1] == 'c')
-			{
-				ft_putchar_fd(va_arg(ap, int), 1);
-				printed_index++;
-			}
-			else if (str[i + 1] == 's')
-				printed_index += print_and_calc_str(va_arg(ap, char *));
-			else if (str[i + 1] == 'p')
-				printed_index += print_ptr_adress(va_arg(ap, size_t));
-			else if ((str[i + 1] == 'd' || str[i + 1] == 'i'))
-				printed_index += print_and_calc_num(va_arg(ap, int));
-			else if (str[i + 1] == 'u')
-				ft_put_unsigned(va_arg(ap, unsigned int), &printed_index);
-			else if ((str[i + 1] == 'x' || str[i + 1] == 'X'))
-				printed_index += print_hex(va_arg(ap, int), str[i + 1]);
-			else if (str[i + 1] == '%')
-			{
-				ft_putchar_fd(str[i + 1], 1);
-				printed_index++;
-			}
-			i++;
-		}
-		else
-		{
-			ft_putchar_fd(str[i], 1);
-			printed_index++;
-		}
-		i++;
+		ft_putchar_fd(va_arg(ap, int), 1);
+		printed_index++;
+	}
+	else if (c == 's')
+		printed_index += print_and_calc_str(va_arg(ap, char *));
+	else if (c == 'p')
+		printed_index += print_ptr_adress(va_arg(ap, size_t));
+	else if ((c == 'd' || c == 'i'))
+		printed_index += print_and_calc_num(va_arg(ap, int));
+	else if (c == 'u')
+		ft_put_unsigned(va_arg(ap, unsigned int), &printed_index);
+	else if ((c == 'x' || c == 'X'))
+		printed_index += print_hex(va_arg(ap, int), c);
+	else if (c == '%')
+	{
+		ft_putchar_fd(c, 1);
+		printed_index++;
 	}
 	return (printed_index);
 }
@@ -92,9 +75,26 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	int		printed_index;
+	int		i;
 
 	va_start(ap, str);
-	printed_index = printer(ap, str);
+	printed_index = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '%')
+		{
+			if (!str[i + 1])
+				break ;
+			printed_index += print_by_format(ap, str[++i]);
+		}
+		else
+		{
+			ft_putchar_fd(str[i], 1);
+			printed_index++;
+		}
+		i++;
+	}
 	va_end(ap);
 	return (printed_index);
 }

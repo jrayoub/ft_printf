@@ -17,8 +17,8 @@
 # include <stdarg.h>
 
 int		ft_printf(const char *str, ...);
-int		ft_calc_num_base_size(unsigned long int n, int base);
-void	ft_converter_base_hex(unsigned long int n,char format);
+int		ft_calc_num_base_size(long int n, int base);
+void	ft_converter_base_hex(unsigned long int n, char format, int *size);
 void	ft_put_unsigned(unsigned int num, int *i);
 int		print_hex(unsigned int n, char formate);
 int		print_ptr_adress(size_t n);

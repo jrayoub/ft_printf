@@ -16,8 +16,7 @@ int	print_hex(unsigned int n, char formate)
 {
 	int	size;
 
-	// printf("\n\nvalue is ÷:: %lu\n", n);
-	size = ft_calc_num_base_size(n, 16);
-	ft_converter_base_hex(n, formate);
+	size = 0;
+	ft_converter_base_hex(n, formate, &size);
 	return (size);
 }

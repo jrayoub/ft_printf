@@ -16,10 +16,13 @@ int	print_ptr_adress(size_t n)
 {
 	int	size;
 
-	size = ft_calc_num_base_size(n, 16);
-	// if (size > 8)
-	// 	size = 12;
+	size = 0;
+	if (n == 0)
+	{
+		ft_putstr_fd("(nil)", 1);
+		return (5);
+	}
 	ft_putstr_fd("0x", 1);
-	ft_converter_base_hex(n, 'x');
+	ft_converter_base_hex(n, 'x', &size);
 	return (size + 2);
 }

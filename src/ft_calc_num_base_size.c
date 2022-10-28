@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+
 int	ft_calc_num_base_size(long int n, int base)
 {
 	int	i;
